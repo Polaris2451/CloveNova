@@ -5,7 +5,7 @@ const surveyId = urlParams.get('id');
 // 获取问卷数据
 async function loadSurvey() {
     try {
-        const response = await fetch(`/api/survey/${surveyId}`);
+        const response = await fetch(`https://api.clovenova.cn/api/survey/${surveyId}`);
         if (!response.ok) throw new Error('问卷加载失败');
 
         const data = await response.json();
@@ -39,7 +39,6 @@ function renderSurvey(survey) {
 }
 
 function renderSingleChoice(questionId, options) {
-    if (!Array.isArray(options)) throw new Error("options不是数组");
     return `<ul class="option-list">
         ${options.map(opt => `
             <li class="option-item">

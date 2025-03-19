@@ -2,7 +2,7 @@
 class TokenPulse {
     constructor({
         checkInterval = 60000, // 默认60秒检测一次
-        endpoint = '/api/validate-token', // 验证端点
+        endpoint = 'https://api.clovenova.cn/api/validate-token', // 验证端点
         onTokenExpired = () => {
             window.location.href = '/login'; // 默认过期跳转登录页
         }
@@ -58,7 +58,7 @@ const userId = localStorage.getItem('userId');
 // 加载公共问卷
 async function loadPublicSurveys() {
     try {
-        const response = await fetch('/api/public/surveys', {
+        const response = await fetch('https://api.clovenova.cn/api/public/surveys', {
             headers: {
                 'Authorization': `Bearer ${authToken}`
             }
@@ -74,7 +74,7 @@ async function loadPublicSurveys() {
 // 加载个人问卷（修改同上）
 async function loadMySurveys() {
     try {
-        const response = await fetch('/api/user/surveys', {
+        const response = await fetch('https://api.clovenova.cn/api/user/surveys', {
             headers: {
                 'Authorization': `Bearer ${authToken}`
             }

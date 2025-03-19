@@ -9,7 +9,7 @@ async function handleRegister(e) {
     console.log('注册请求:', { username, password });
 
     try {
-        const response = await fetch('/api/register', {
+        const response = await fetch('https://api.clovenova.cn/api/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(registerData)

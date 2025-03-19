@@ -7,7 +7,7 @@ async function handleLogin(e) {
     // 这里添加实际登录逻辑
     console.log('登录请求:', { username, password });
     try {
-        const response = await fetch('/api/login', {
+        const response = await fetch('https://api.clovenova.cn/api/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(loginData)

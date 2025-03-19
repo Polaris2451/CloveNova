@@ -1,0 +1,59 @@
+.survey-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.survey-title {
+    color: #1a365d;
+    margin-bottom: 0.5rem;
+}
+
+.survey-description {
+    color: #4a5568;
+    margin-bottom: 2rem;
+}
+
+.question-card {
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+}
+
+.question-text {
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.option-list {
+    list-style: none;
+    padding: 0;
+}
+
+.option-item {
+    margin-bottom: 0.5rem;
+}
+
+.text-input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 4px;
+    line-height: 1.5;
+    resize: vertical; /* 允许垂直调整大小 */
+    min-height: 100px;
+}
+
+.submit-btn {
+    background: #4299e1;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

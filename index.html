@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clove问卷 - 您的智能问卷平台</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar">
+    <a href="/" class="logo">Clove 问卷</a>
+    <div class="nav-links">
+        <a href="/create" class="create-btn">+ 新建问卷</a>
+    </div>
+    <div class="user-menu">
+        <a href=# class="user-me-btn">
+            <svg t="1742278187554" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2870" width="200" height="200"><path d="M512.02048 476.09856c-84.3776 0-153.00608-68.62848-153.00608-152.9856s68.62848-152.9856 153.00608-152.9856c84.35712 0 152.9856 68.62848 152.9856 152.9856s-68.62848 152.9856-152.9856 152.9856z m0-260.93568c-59.53536 0-107.97056 48.4352-107.97056 107.95008s48.4352 107.95008 107.97056 107.95008c59.51488 0 107.95008-48.4352 107.95008-107.95008s-48.4352-107.95008-107.95008-107.95008zM623.63648 853.85216H400.384c-105.49248 0-191.32416-76.20608-191.32416-169.86112 0-93.63456 85.83168-169.84064 191.32416-169.84064h223.25248c105.472 0 191.32416 76.20608 191.32416 169.84064 0 93.67552-85.83168 169.86112-191.32416 169.86112zM400.384 559.18592c-80.67072 0-146.30912 55.99232-146.30912 124.8256 0 68.83328 65.6384 124.84608 146.30912 124.84608h223.25248c80.65024 0 146.30912-55.99232 146.30912-124.84608 0-68.8128-65.6384-124.8256-146.30912-124.8256H400.384z" fill="#8d8d8d" p-id="2871"></path></svg>            </a>
+        <div id="userPanel" class="user-panel">
+            <div class="panel-header">
+                <h3>用户名</h3>
+                <p>user@example.com</p>
+            </div>
+            <ul class="panel-menu">
+                <li><a href="#">个人中心</a></li>
+                <li><a href="#">数据面板</a></li>
+                <li><a href="#" style="color:orangered;font-weight: bold;">退出登录</a></li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<main class="container">
+    <div class="action-bar">
+        <input type="text" class="search-input" id="SearchKeyword" placeholder="搜索问卷...">
+        <select class="filter-select" id="filterSelect">
+            <option value="all">全部问卷</option>
+            <option value="my">我的问卷</option>
+            <option value="popular">热门问卷</option>
+        </select>
+    </div>
+
+    <div class="survey-list" id="surveyList">
+        <div class="loader"></div>
+    </div>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

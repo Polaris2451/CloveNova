@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>用户注册</h2>
+        <form id="registerForm" onsubmit="return handleRegister(event)">
+            <div class="form-group">
+                <input type="text" placeholder="用户名" id="username" required>
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="密码" id="password" required>
+            </div>
+            <button type="submit">立即注册</button>
+        </form>
+        <div class="link">
+            <a href="/login">返回登录</a>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

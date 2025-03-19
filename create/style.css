@@ -1,0 +1,200 @@
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #1e40af;
+    --background-color: #f3f4f6;
+}
+
+body {
+    background-color: var(--background-color);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    padding: 2rem;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 0.8rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+.description-input {
+    width: 100%;
+    max-width: 800px;
+    padding-bottom: 0.8rem;
+    padding-top: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.5;
+    resize: vertical; /* 允许垂直调整大小 */
+    min-height: 100px;
+    transition: border-color 0.2s;
+    margin-bottom: 2rem;
+}
+.description-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 1px var(--primary-color);
+}
+.switch-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+.modern-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    cursor: pointer;
+}
+.modern-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.labels::after {
+    position: absolute;
+    content: attr(data-off);
+    right: -50px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #64748b;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    max-width: 800px;
+    padding-bottom: 0.8rem;
+    padding-top: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.question-card {
+    background: #f8fafc;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.option-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    border: none;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-secondary {
+    background: #64748b;
+    color: white;
+}
+
+.btn-danger-primary {
+    background: #dc2626;
+    color: white;
+    width: 80px;
+    max-width: 80px;
+    max-height: 40px;
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+}
+
+.btn-danger-secondary {
+    background: #dc2626;
+    color: white;
+    max-width: 100px;
+    max-height: 60px;
+    margin-right: 0.5rem;
+}
+
+#questionsContainer {
+    margin-top: 2rem;
+}
+
+.add-btn {
+    margin-top: 1rem;
+}
+input:checked + .slider {
+    background-color: var(--primary-color);
+}
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+input:checked ~ .labels::after {
+    content: attr(data-on);
+    color: var(--primary-color);
+    right: -50px;
+}
+/* 交互优化 */
+.modern-switch:hover .slider {
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+input:focus-visible + .slider {
+    box-shadow: 0 0 0 2px var(--primary-color);
+}
+.switch-label {
+    font-weight: 500;
+    color: #1e293b;
+}

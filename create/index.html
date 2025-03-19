@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建问卷 - Clove问卷</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="form-title">创建新问卷</h1>
+
+        <div class="input-group">
+            <label for="title">问卷标题</label>
+            <input type="text" class="title" id="title" required>
+            <label for="description">问卷描述</label>
+            <textarea
+                    id="description"
+                    rows="4"
+                    class="description-input"
+                    placeholder="请输入问卷描述..."
+            ></textarea>
+            <label class="modern-switch">
+                <input type="checkbox" id="is_public" hidden>
+                <span class="slider"></span>
+                <span class="labels" data-on="公开" data-off="私有"></span>
+            </label>
+        </div>
+        <div id="questionsContainer">
+            <!-- 问题将动态添加到这里 -->
+        </div>
+
+        <button class="btn btn-secondary" onclick="addQuestion()">+ 添加问题</button>
+
+        <div style="margin-top: 3rem;">
+            <button class="btn btn-primary" onclick="submitSurvey()">发布问卷</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

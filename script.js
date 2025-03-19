@@ -150,8 +150,9 @@ function handleFilterChange(e) {
 }
 // 修改初始化函数
 function init() {
-
-    const token = localStorage.getItem('authToken');
+    loadPublicSurveys();
+}
+const token = localStorage.getItem('authToken');
     if (!token) {
         window.location.href = '/login';
         return;
@@ -160,9 +161,7 @@ function init() {
     document.getElementById('filterSelect').addEventListener('change', handleFilterChange);
     document.querySelector('.search-input').addEventListener('input', applyFilters); // 改为实时输入监听
 
-
-    // 使用示例
-    const pulse = new TokenPulse({
+ const pulse = new TokenPulse({
         onTokenExpired: () => {
             alert('会话已过期，请重新登录');
             window.location.href = '/login';
@@ -175,7 +174,5 @@ function init() {
     // 登出时停止
     // pulse.stop();
 
-    loadPublicSurveys();
-}
 // 等待DOM加载完成后执行
 document.addEventListener('DOMContentLoaded', init);

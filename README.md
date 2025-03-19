@@ -7,4 +7,8 @@ It's a personal questionnaire website with many errors.(so sorry to write that b
 If you read here you can find that I'm also not so good at English. What a pity! :(
 
 Oh,I forgot to finish my homework! The deadline is terribly close. See u later. ^-^
+
+...
+
+I'm back.It's so hard. :( 
 </p>

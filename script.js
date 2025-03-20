@@ -169,23 +169,6 @@ function start_service() {
 function init() {
     if (!authToken) {
         window.location.href = '/login';
-        return false;
-    }
-
-    try {
-        const response = fetch(this.endpoint, {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${this.getToken()}` // 从存储中获取token
-            }
-        });
-
-        if (response.status === 401) {
-            return false;
-        }
-    } catch (error) {
-        console.error('Token check failed:', error);
-        return false;
     }
 
     const pulse = new TokenPulse({
@@ -199,13 +182,9 @@ function init() {
 
     // 登出时停止
     // pulse.stop();
-    return true;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    if (init()) {  // 先检查 Token 再启动服务
-        start_service();
-    }
-});
+init()
+document.addEventListener('DOMContentLoaded', start_service);
 
 

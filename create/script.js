@@ -1,3 +1,4 @@
+import {authToken,userId,TokenPulse} from "../ValidateToken";
 // 问题类型模板
 const questionTypes = {
     single_select: '单选题',

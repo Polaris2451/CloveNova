@@ -1,3 +1,4 @@
+import {authToken,userId,TokenPulse} from "../ValidateToken";
 // 获取问卷ID
 const urlParams = new URLSearchParams(window.location.search);
 const surveyId = urlParams.get('id');
@@ -94,5 +95,7 @@ function init() {
     // 初始化加载
     loadSurvey();
 }
+
+
 // 等待DOM加载完成后执行
 document.addEventListener('DOMContentLoaded', init);

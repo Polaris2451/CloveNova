@@ -1,3 +1,7 @@
+// 获取认证信息
+const authToken = localStorage.getItem('authToken');
+const userId = localStorage.getItem('userId');
+
 //Token验证
 class TokenPulse {
     constructor({
@@ -11,7 +15,6 @@ class TokenPulse {
         this.checkInterval = checkInterval;
         this.endpoint = endpoint;
         this.onTokenExpired = onTokenExpired;
-        this.checkToken();
     }
 
     // 启动心跳检测
@@ -52,9 +55,7 @@ class TokenPulse {
 
 // 新增全局变量保存当前问卷数据
 let currentSurveysData = [];
-// 获取认证信息
-const authToken = localStorage.getItem('authToken');
-const userId = localStorage.getItem('userId');
+
 // 加载公共问卷
 async function loadPublicSurveys() {
     try {
@@ -166,19 +167,33 @@ function start_service() {
 }
 // 初始化函数
 function init() {
-    const token = localStorage.getItem('authToken');
-    if (!token) {
+    if (!authToken) {
         window.location.href = '/login';
         return false;
     }
+
+    try {
+        const response = fetch(this.endpoint, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${this.getToken()}` // 从存储中获取token
+            }
+        });
+
+        if (response.status === 401) {
+            return false;
+        }
+    } catch (error) {
+        console.error('Token check failed:', error);
+        return false;
+    }
+
     const pulse = new TokenPulse({
         onTokenExpired: () => {
             alert('会话已过期，请重新登录');
             window.location.href = '/login';
-            return false;
         }
     });
-
     // 登录成功后启动
     pulse.start();
 

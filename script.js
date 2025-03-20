@@ -43,6 +43,7 @@ function userExit(){
         localStorage.removeItem('authToken');
         localStorage.removeItem('userId');
     }
+    alert("用户退出");
     window.location.href = '/login'
 }
 

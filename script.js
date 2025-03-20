@@ -1,4 +1,4 @@
-import {authToken,userId,TokenPulse,validateToken} from "./ValidateToken";
+import {authToken,userId,TokenPulse,validateToken} from "./ValidateToken.js";
 
 // 新增全局变量保存当前问卷数据
 let currentSurveysData = [];

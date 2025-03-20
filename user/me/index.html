@@ -1,19 +1,26 @@
 <!DOCTYPE html>
-<html lang="ch">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>个人中心</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户主页</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <p>用户页面</p>
-  <p>(开发中)</p>
+    <header class="profile-header">
+        <div class="avatar-container">
+            <img src="！！！sample.jpg" alt="用户头像" class="avatar">
+        </div>
+        <h1 class="username">用户名</h1>
+        <p class="bio">个人签名或介绍</p>
+    </header>
+    <section class="history-section">
+        <h2>问卷历史</h2>
+        <ul class="history-list">
+            <!-- JavaScript动态生成 -->
+        </ul>
+    </section>
+
+    <script src="script.js"></script>
 </body>
-<script type="module">
-  import { validateToken } from '../../ValidateToken.js';
-  // 验证token
-  validateToken();
-</script>
-<script src="script.js"></script>
 </html>

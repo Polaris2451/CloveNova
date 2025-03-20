@@ -1,5 +1,3 @@
-import {authToken,userId,TokenPulse} from "../../ValidateToken.js";
-
 // 初始化函数
 function init() {
     if (!authToken) {

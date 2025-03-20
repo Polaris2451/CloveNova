@@ -39,7 +39,12 @@
             <button class="btn btn-primary" onclick="submitSurvey()">发布问卷</button>
         </div>
     </div>
-    <script type="module" src="script.js"></script>
+    <script type="module">
+        import { validateToken } from '../ValidateToken.js';
+        // 验证token
+        validateToken();
+    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>

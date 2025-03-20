@@ -1,5 +1,3 @@
-import {authToken,userId,TokenPulse,validateToken} from "./ValidateToken.js";
-
 // 新增全局变量保存当前问卷数据
 let currentSurveysData = [];
 
@@ -107,20 +105,13 @@ function handleFilterChange(e) {
     }
 }
 
-function start_service() {
+function init() {
     // 绑定事件监听器
     document.getElementById('filterSelect').addEventListener('change', handleFilterChange);
     document.querySelector('.search-input').addEventListener('input', applyFilters); // 改为实时输入监听
     loadPublicSurveys();
 }
-// 初始化函数
-function init() {
-    setTimeout(() => {
-        validateToken();
-    }, 1000); // 延迟1秒启动
-}
 
-init();
-document.addEventListener('DOMContentLoaded', start_service);
+document.addEventListener('DOMContentLoaded', init);
 
 

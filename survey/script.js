@@ -1,4 +1,3 @@
-import {authToken,userId,TokenPulse} from "../ValidateToken.js";
 // 获取问卷ID
 const urlParams = new URLSearchParams(window.location.search);
 const surveyId = urlParams.get('id');

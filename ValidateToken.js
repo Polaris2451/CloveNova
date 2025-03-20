@@ -41,7 +41,6 @@ class TokenPulse {
     }
 }
 
-// 唯一暴露的公共方法
 export function validateToken() {
     // 实时检查token是否存在
     if (!getCurrentToken()) {

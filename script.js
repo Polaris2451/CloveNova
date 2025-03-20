@@ -1,6 +1,6 @@
 // 新增全局变量保存当前问卷数据
 let currentSurveysData = [];
-
+const authToken=localStorage.getItem('authToken');
 // 加载公共问卷
 async function loadPublicSurveys() {
     try {

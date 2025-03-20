@@ -5,7 +5,7 @@ async function handleLogin(e) {
         password: document.getElementById('password').value
     };
     // 这里添加实际登录逻辑
-    console.log('登录请求:', { username, password });
+    //console.log('登录请求:', { username, password });
     try {
         const response = await fetch('https://api.clovenova.cn/api/login', {
             method: 'POST',

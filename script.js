@@ -114,10 +114,12 @@ function start_service() {
 }
 // 初始化函数
 function init() {
-    validateToken();
+    setTimeout(() => {
+        validateToken();
+    }, 1000); // 延迟1秒启动
 }
 
-init()
+init();
 document.addEventListener('DOMContentLoaded', start_service);
 
 

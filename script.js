@@ -187,9 +187,10 @@ function init() {
     return true;
 }
 
-// 初始化
-if(init()){
-    // 等待DOM加载完成后执行
-    document.addEventListener('DOMContentLoaded', start_service);
-}
+document.addEventListener('DOMContentLoaded', function() {
+    if (init()) {  // 先检查 Token 再启动服务
+        start_service();
+    }
+});
+
 

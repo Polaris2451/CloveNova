@@ -15,6 +15,7 @@ export class TokenPulse {
         this.checkInterval = checkInterval;
         this.endpoint = endpoint;
         this.onTokenExpired = onTokenExpired;
+        this.checkToken();
     }
 
     // 启动心跳检测

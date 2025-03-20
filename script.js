@@ -184,6 +184,7 @@ function init() {
 
     // 登出时停止
     // pulse.stop();
+    return true;
 }
 
 // 初始化

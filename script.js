@@ -49,7 +49,6 @@ class TokenPulse {
     }
 }
 
-
 // 新增全局变量保存当前问卷数据
 let currentSurveysData = [];
 // 获取认证信息
@@ -88,6 +87,15 @@ async function loadMySurveys() {
     }
 }
 
+// 用户登出
+function userExit(){
+    const token = localStorage.getItem('authToken');
+    if (token) {
+        localStorage.removeItem('authToken');
+        localStorage.removeItem('userId');
+    }
+    window.location.href = '/login'
+}
 
 // 渲染函数
 function renderSurveys(surveys) {

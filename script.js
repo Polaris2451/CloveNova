@@ -11,6 +11,7 @@ class TokenPulse {
         this.checkInterval = checkInterval;
         this.endpoint = endpoint;
         this.onTokenExpired = onTokenExpired;
+        this.checkToken();
     }
 
     // 启动心跳检测
@@ -156,29 +157,34 @@ function handleFilterChange(e) {
             break;
     }
 }
-// 修改初始化函数
-function init() {
+
+function start_service() {
     // 绑定事件监听器
     document.getElementById('filterSelect').addEventListener('change', handleFilterChange);
     document.querySelector('.search-input').addEventListener('input', applyFilters); // 改为实时输入监听
     loadPublicSurveys();
 }
-const token = localStorage.getItem('authToken');
+// 初始化函数
+function init() {
+    const token = localStorage.getItem('authToken');
     if (!token) {
         window.location.href = '/login';
     }
-const pulse = new TokenPulse({
+    const pulse = new TokenPulse({
         onTokenExpired: () => {
             alert('会话已过期，请重新登录');
             window.location.href = '/login';
         }
     });
 
-// 登录成功后启动
-pulse.start();
+    // 登录成功后启动
+    pulse.start();
 
-// 登出时停止
-// pulse.stop();
+    // 登出时停止
+    // pulse.stop();
+}
 
+// 初始化
+init();
 // 等待DOM加载完成后执行
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('DOMContentLoaded', start_service);

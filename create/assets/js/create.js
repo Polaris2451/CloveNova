@@ -119,7 +119,7 @@ async function submitSurvey() {
     if (hasError) return;
     try {
         const token = localStorage.getItem('authToken');
-        const response = await fetch('https://api.clovenova.cn/api/create', {
+        const response = await fetch('https://api.clovenova.cn/api/create-survey', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

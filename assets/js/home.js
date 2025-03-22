@@ -104,6 +104,35 @@ function handleFilterChange(e) {
             break;
     }
 }
+// XSS防护函数
+function escapeHTML(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+// 获取用户信息
+async function getUserProfile() {
+    try {
+        // 调用用户信息API
+        const response = await fetch('https://api.clovenova.cn/api/user/profile', {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        });
+        if (!response.ok) throw new Error('获取用户信息失败');
+
+        const userData = await response.json();
+        // 更新DOM
+        const panelHeader = document.querySelector('.panel-header');
+        panelHeader.innerHTML = `
+            <h3>${escapeHTML(userData.username)}</h3>
+            <p>UID: ${userData.user_id}</p>
+        `;
+    } catch (error) {
+        console.error('错误:', error);
+        alert('用户信息加载失败');
+    }
+}
 
 function init() {
     // 绑定事件监听器
@@ -112,6 +141,7 @@ function init() {
     loadPublicSurveys();
 }
 
+getUserProfile();
 document.addEventListener('DOMContentLoaded', init);
 
 

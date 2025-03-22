@@ -130,7 +130,7 @@ async function submitSurvey() {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify(surveyData)
+            body: surveyData
         });
         if (response.ok) {
             alert('创建成功！');

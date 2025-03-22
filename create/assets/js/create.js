@@ -116,14 +116,12 @@ async function submitSurvey() {
                 hasError = true;
                 break;
             }
-            question.options = JSON.stringify(question.options);
         }
         surveyData.questions.push(question);
     }
     if (hasError) return;
     try {
         const token = localStorage.getItem('authToken');
-        localStorage.setItem("json-survey", JSON.stringify(surveyData));
         const response = await fetch('https://api.clovenova.cn/api/create-survey', {
             method: 'POST',
             headers: {

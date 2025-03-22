@@ -105,8 +105,11 @@ async function submitSurvey() {
         if (type !== 'text') {
             const optionInputs = card.querySelectorAll('.option-input');
             question.options = Array.from(optionInputs)
-                .map(opt => opt.value.trim())
-                .filter(v => v);
+                .map(opt => {
+                    const text = opt.value.trim();
+                    return text ? { text } : null; // 转换格式并处理空值
+                })
+                .filter(Boolean); // 过滤空选项
             // 验证选项数量
             if (question.options.length < 2) {
                 alert('选择题至少需要两个选项');

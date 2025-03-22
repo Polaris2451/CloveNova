@@ -26,18 +26,40 @@ function renderSurvey(survey) {
     survey.questions.forEach((question, index) => {
         const questionDiv = document.createElement('div');
         questionDiv.className = 'question-card';
-        // 临时全部渲染为单选题（正式使用时需要根据question_type判断）
-        const inputHtml = question.options
-            ? renderSingleChoice(question.id, question.options)
-            : renderTextAnswer(question.id);
+        // 根据题型类型渲染不同内容
+        let inputHtml = '';
+        switch(question.Type) {
+            case 'single_select':
+                inputHtml = renderSingleChoice(question.id, question.options);
+                break;
+
+            case 'multiple_select':
+                inputHtml = renderMultipleChoice(question.id, question.options);
+                break;
+
+            case 'text':
+                inputHtml = renderTextAnswer(question.id);
+                break;
+
+            case 'rating':
+                //inputHtml = renderRating(question.id);
+                break;
+
+            default:
+                console.warn(`未知题型类型: ${question.Type}`);
+                inputHtml = renderFallbackInput(question.id);
+        }
         questionDiv.innerHTML = `
-                <div class="question-text">Q${index + 1}: ${question.content}</div>
+                <div class="question-header">
+                    <span class="question-number">Q${index + 1}</span>
+                    <div class="question-text">${question.content}</div>
+                </div>
                 ${inputHtml}
             `;
         container.appendChild(questionDiv);
     });
 }
-
+// 渲染单选题
 function renderSingleChoice(questionId, options) {
     return `<ul class="option-list">
         ${options.map(opt => `
@@ -53,7 +75,7 @@ function renderSingleChoice(questionId, options) {
     </ul>`;
 }
 
-
+// 渲染多选题
 function renderMultipleChoice(questionId, options) {
     return `<ul class="option-list">
         ${options.map(opt => `
@@ -69,10 +91,22 @@ function renderMultipleChoice(questionId, options) {
     </ul>`;
 }
 
+// 渲染文本题
 function renderTextAnswer(questionId) {
     return `<textarea class="text-input" rows="3"
                       name="q_${questionId}"
                       required></textarea>`;
+}
+
+// 渲染评分题
+// 待补充
+
+// 渲染未知类型
+// 新增的备选渲染方案
+function renderFallbackInput(questionId) {
+    return `<div class="error-notice">
+                <p>暂不支持的题型</p>
+            </div>`;
 }
 
 

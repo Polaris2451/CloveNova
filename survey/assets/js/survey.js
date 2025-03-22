@@ -33,7 +33,7 @@ function renderSurvey(survey) {
                 inputHtml = renderSingleChoice(question.id, question.options);
                 break;
 
-            case 'multiple_select':
+            case 'multi_select':
                 inputHtml = renderMultipleChoice(question.id, question.options);
                 break;
 

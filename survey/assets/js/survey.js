@@ -31,7 +31,7 @@ function renderSurvey(survey) {
             ? renderSingleChoice(question.id, question.options)
             : renderTextAnswer(question.id);
         questionDiv.innerHTML = `
-                <div class="question-text">Q${index + 1}: ${question.question_text}</div>
+                <div class="question-text">Q${index + 1}: ${question.content}</div>
                 ${inputHtml}
             `;
         container.appendChild(questionDiv);

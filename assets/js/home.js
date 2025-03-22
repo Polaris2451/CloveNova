@@ -116,7 +116,7 @@ async function getUserProfile() {
         // 调用用户信息API
         const response = await fetch('https://api.clovenova.cn/api/user/profile', {
             headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
+                'Authorization': `Bearer ${localStorage.getItem('authToken')}`
             }
         });
         if (!response.ok) throw new Error('获取用户信息失败');

@@ -98,7 +98,8 @@ async function submitSurvey() {
         }
         const question = {
             content: content,
-            type: type
+            Type: type,
+            options:[]
         };
         // 处理选择题选项
         if (type !== 'text') {

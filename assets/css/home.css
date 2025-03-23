@@ -232,13 +232,19 @@ optgroup option {
     flex-direction: column;
     overflow: hidden;
     cursor: pointer;
+    position: relative;
 }
+.survey-card:hover {
+    transform: translateY(-2px);
+}
+
 
 .survey-card p {
     flex: 1;              /* 占据剩余空间 */
     margin: 8px 0;
     overflow: hidden;
-
+    line-height: 0.9em;     /* 根据实际字体大小调整 */
+    max-height: 1.8em;
     /* 多行文本省略 */
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -248,9 +254,22 @@ optgroup option {
     /*white-space: nowrap;
     text-overflow: ellipsis;*/
 }
+.survey-card p::after {
+    content: attr(data-fulltext);
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 8px;
+    border-radius: 4px;
+    white-space: pre-wrap;
+    display: none;
+    z-index: 10;
+}
 
-.survey-card:hover {
-    transform: translateY(-2px);
+.survey-card:hover p::after {
+    display: block;
 }
 
 .survey-title {

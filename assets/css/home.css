@@ -248,40 +248,44 @@ optgroup option {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    position: relative;
+    position: static;
     /* 单行文本省略（二选一） */
     /*white-space: nowrap;
     text-overflow: ellipsis;*/
 }
-.survey-card p::after {
+
+
+.survey-card ::after {
     content: attr(data-fulltext);
     position: absolute;
-    bottom: calc(100% + 8px);
-    left: 0;
+    bottom: calc(100% + 12px);
+    left: 50%;
     min-width: 200px;
     max-width: 280px;
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.9);
     color: white;
-    padding: 10px;
-    border-radius: 6px;
+    padding: 12px;
+    border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     white-space: pre-wrap;
     opacity: 0; /* 初始不可见 */
-    transition: opacity 0.2s;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: none; /* 防止干扰悬停 */
     z-index: 1000;
     font-size: 0.9em;
-    line-height: 1.4;
-    transform: translateY(10px); /* 下移初始位置 */
+    line-height: 1.5;
+    transform: translateX(-50%) translateY(10px);
+    text-align: left;
 }
 
 /* 添加小三角装饰 */
-.survey-card p::before {
+.survey-card ::before {
     content: '';
     position: absolute;
-    bottom: 100%;
-    left: 15px;
-    border: 6px solid transparent;
+    bottom: calc(100% - 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    border: 8px solid transparent;
     border-top-color: rgba(0,0,0,0.9);
     opacity: 0;
     transition: inherit;
@@ -292,7 +296,7 @@ optgroup option {
 .survey-card:hover p::after,
 .survey-card:hover p::before {
     opacity: 1; /* 淡入显示 */
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
 }
 
 .survey-title {

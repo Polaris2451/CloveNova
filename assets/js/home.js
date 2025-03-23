@@ -58,7 +58,7 @@ function renderSurveys(surveys) {
         card.className = 'survey-card';
         card.innerHTML = `
             <h3 class="survey-title">${survey.title || '未命名问卷'}</h3>
-            <p title="${survey.description || '暂无描述'}">${survey.description || '暂无描述'}</p>
+            <p data-fulltext="${survey.description || '暂无描述'}">${survey.description || '暂无描述'}</p>
             <div class="survey-meta">
                 <span>${new Date(survey.create_time).toLocaleDateString('zh-CN')}</span>
                 <span>${survey.response_count} 人参与</span>

@@ -238,7 +238,6 @@ optgroup option {
     transform: translateY(-2px);
 }
 
-
 .survey-card p {
     flex: 1;              /* 占据剩余空间 */
     margin: 8px 0;
@@ -249,7 +248,7 @@ optgroup option {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-
+    position: relative;
     /* 单行文本省略（二选一） */
     /*white-space: nowrap;
     text-overflow: ellipsis;*/
@@ -271,7 +270,6 @@ optgroup option {
 .survey-card:hover p::after {
     display: block;
 }
-
 .survey-title {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;

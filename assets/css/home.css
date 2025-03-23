@@ -241,7 +241,7 @@ optgroup option {
 
     /* 多行文本省略 */
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* 显示行数 */
+    -webkit-line-clamp: 5; /* 显示行数 */
     -webkit-box-orient: vertical;
 
     /* 单行文本省略（二选一） */

@@ -243,8 +243,8 @@ optgroup option {
     flex: 1;              /* 占据剩余空间 */
     margin: 8px 0;
     overflow: hidden;
-    line-height: 0.9em;     /* 根据实际字体大小调整 */
-    max-height: 1.8em;
+    line-height: 1.5em;     /* 根据实际字体大小调整 */
+    max-height: 3em;
     /* 多行文本省略 */
     display: -webkit-box;
     -webkit-line-clamp: 2;

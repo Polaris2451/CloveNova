@@ -234,6 +234,21 @@ optgroup option {
     cursor: pointer;
 }
 
+.survey-card p {
+    flex: 1;              /* 占据剩余空间 */
+    margin: 8px 0;
+    overflow: hidden;
+
+    /* 多行文本省略 */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* 显示行数 */
+    -webkit-box-orient: vertical;
+
+    /* 单行文本省略（二选一） */
+    /* white-space: nowrap;
+    text-overflow: ellipsis; */
+}
+
 .survey-card:hover {
     transform: translateY(-2px);
 }

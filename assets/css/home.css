@@ -222,11 +222,15 @@ optgroup option {
 }
 
 .survey-card {
+    height: 150px;
     background: white;
     border-radius: 0.8rem;
     padding: 1.5rem;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
     cursor: pointer;
 }
 

@@ -230,7 +230,7 @@ optgroup option {
     transition: transform 0.2s;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow: visible;
     cursor: pointer;
     position: relative;
 }
@@ -256,20 +256,45 @@ optgroup option {
 .survey-card p::after {
     content: attr(data-fulltext);
     position: absolute;
-    bottom: 100%;
+    bottom: calc(100% + 8px);
     left: 0;
+    min-width: 200px;
+    max-width: 280px;
     background: rgba(0,0,0,0.8);
     color: white;
-    padding: 8px;
-    border-radius: 4px;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     white-space: pre-wrap;
-    display: none;
-    z-index: 10;
+    opacity: 0; /* 初始不可见 */
+    transition: opacity 0.2s;
+    pointer-events: none; /* 防止干扰悬停 */
+    z-index: 1000;
+    font-size: 0.9em;
+    line-height: 1.4;
+    transform: translateY(10px); /* 下移初始位置 */
 }
 
-.survey-card:hover p::after {
-    display: block;
+/* 添加小三角装饰 */
+.survey-card p::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 15px;
+    border: 6px solid transparent;
+    border-top-color: rgba(0,0,0,0.9);
+    opacity: 0;
+    transition: inherit;
+    pointer-events: none;
+    z-index: 1001;
 }
+
+.survey-card:hover p::after,
+.survey-card:hover p::before {
+    opacity: 1; /* 淡入显示 */
+    transform: translateY(0);
+}
+
 .survey-title {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;

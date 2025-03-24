@@ -62,9 +62,7 @@ body {
     position: relative; /* 定位基准 */
     display: inline-block;
 }
-.user-panel {
 
-}
 .user-me-btn {
     width: 2.5rem;
     height: 2.5rem;

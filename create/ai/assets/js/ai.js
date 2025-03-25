@@ -21,7 +21,7 @@ document.getElementById('myForm').addEventListener('submit', async (e) => {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
-            body: inputField.value
+            body: inputField.value.toString()
         });
         if (!AIresponse.ok) throw new Error('生成失败');
 

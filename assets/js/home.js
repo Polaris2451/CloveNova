@@ -4,7 +4,7 @@ const authToken=localStorage.getItem('authToken');
 // 加载公共问卷
 async function loadPublicSurveys() {
     try {
-        const response = await fetch('https://api.clovenova.cn/api/public/surveys', {
+        const response = await fetch('https://api.clovenova.cn/api/surveys/public', {
             headers: {
                 'Authorization': `Bearer ${authToken}`
             }
@@ -20,7 +20,7 @@ async function loadPublicSurveys() {
 // 加载个人问卷（修改同上）
 async function loadMySurveys() {
     try {
-        const response = await fetch('https://api.clovenova.cn/api/user/surveys', {
+        const response = await fetch('https://api.clovenova.cn/api/surveys/my', {
             headers: {
                 'Authorization': `Bearer ${authToken}`
             }

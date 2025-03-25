@@ -12,3 +12,4 @@ Oh,I forgot to finish my homework! The deadline is terribly close. See u later. 
 
 I'm back.It's so hard. :( 
 </p>
+<a href="https://wj.clovenova.cn/login">Click here to visit our site!</a>

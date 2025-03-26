@@ -40,7 +40,6 @@ async function handleRegister(e) {
         username: document.getElementById('username1').value,
         password: document.getElementById('password1').value
     };
-
     // 这里添加实际注册逻辑
     //console.log('注册请求:', { username, password });
 
@@ -75,6 +74,7 @@ async function handleLogin(e) {
         username: document.getElementById('username2').value,
         password: document.getElementById('password2').value
     };
+    alert("2");
     // 这里添加实际登录逻辑
     //console.log('登录请求:', { username, password });
     try {

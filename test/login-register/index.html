@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLOVENOVA您的智能问卷平台</title>
+    <link rel="stylesheet" href="assets/css/login&register.css">
+
+</head>
+
+<body>
+
+    <div class="shell">
+        <div class="container a-container" id="a-container">
+            <form action="" method="" class="form" id="registerForm" onsubmit="return handleRegister(event)">
+                <h2 class="form_title title">创建账号</h2>
+                <div class="form_icons">
+                </div>
+                <a class="form_link" href="#">了解我们</a>
+
+                <span class="form_span">...</span>
+                <input type="text" class="form_input" placeholder="用户名" id="username1" required="required">
+                <input type="text" class="form_input" placeholder="密码" id="password1" required="required">
+                <button class="form_button button submit" type="submit">立即注册</button>
+            </form>
+        </div>
+
+        <div class="container b-container" id="b-container">
+            <form action="" method="" class="form" id="b-form" onsubmit="return handleLogin(event)">
+                <h2 class="form_title title">登入账号</h2>
+                <div class="form_icons">
+                </div>
+                <a class="form_link" href="#">了解我们</a>
+                <span class="form_span">...</span>
+                <input type="text" class="form_input" placeholder="用户名" id="username2" required="required">
+                <input type="text" class="form_input" placeholder="密码" id="password2" required="required">
+                <a class="form_link">忘记密码？</a>
+                <button class="form_button button submit" type="submit">立即登录</button>
+            </form>
+        </div>
+
+        <div class="switch" id="switch-cnt">
+            <div class="switch_circle"></div>
+            <div class="switch_circle switch_circle-t"></div>
+            <div class="switch_container" id="switch-c1">
+                <h2 class="switch_title title" style="letter-spacing: 0;">欢迎回来</h2>
+                <p class="switch_description description">登入账号</p>
+                <button class="switch_button button switch-btn">立即登录</button>
+            </div>
+
+            <div class="switch_container is-hidden" id="switch-c2">
+                <h2 class="switch_title title" style="letter-spacing: 0;">用户您好</h2>
+                <p class="switch_description description">欢迎加入CLOVENOVA</p>
+                <button class="switch_button button switch-btn">立即注册</button>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/login&register.js"></script>
+</body>
+</html>

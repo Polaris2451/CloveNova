@@ -6,7 +6,7 @@ async function handleRegister(e) {
     };
 
     // 这里添加实际注册逻辑
-    console.log('注册请求:', { username, password });
+    //console.log('注册请求:', { username, password });
 
     try {
         const response = await fetch('https://api.clovenova.cn/api/register', {

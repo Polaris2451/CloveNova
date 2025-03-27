@@ -28,10 +28,28 @@
 <body>
 <div class="container">
     <div class="ai-generator">
-        <h1 class="form-title">AI问卷生成</h1>
-        <input type="text" id="promptInput" placeholder="请输入问卷主题（最多50字）" maxlength="50">
-        <button class="btn btn-primary" onclick="generateSurvey()">生成问卷</button>
-        <div class="loading" id="loading">正在生成问卷，请稍候...</div>
+        <div class="generator-header">
+            <h1>智能问卷生成器</h1>
+            <p>用AI快速生成专业问卷，只需输入您的主题需求</p>
+        </div>
+
+        <div class="input-wrapper">
+            <input type="text"
+                   id="promptInput"
+                   placeholder="例如：大学生心理健康状况调查问卷..."
+                   maxlength="50">
+            <button class="btn generate-button" onclick="generateSurvey()">
+                <span class="button-text">立即生成</span>
+                <svg class="w-6 h-6 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+            </button>
+        </div>
+        <div class="loading" id="loading">
+            <div class="loading-spinner"></div>
+            <span>AI正在创作中，请稍候...</span>
+        </div>
     </div>
 
     <!-- 渲染区域 -->

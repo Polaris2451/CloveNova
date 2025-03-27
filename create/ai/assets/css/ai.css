@@ -9,63 +9,65 @@
 
 /* 新增AI生成样式 */
 .ai-generator {
-    text-align: center;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-radius: 1.5rem;
     padding: 4rem 2rem;
-    border-bottom: 1px solid #e5e7eb;
-    margin-bottom: 2rem;
+    margin: 2rem auto;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
 }
-
+.generator-header {
+    margin-bottom: 2.5rem;
+}
+.generator-header h1 {
+    font-size: 2.25rem;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+.generator-header p {
+    color: #64748b;
+}
 #promptInput {
     width: 100%;
-    max-width: 500px;
-    padding: 1rem 1.5rem;
-    margin: 1.5rem auto;
-    border: 2px solid var(--primary-color);
-    border-radius: 1rem;
-    font-size: 1rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.1);
+    max-width: 600px;
+    padding: 1.25rem 2rem;
+    font-size: 1.1rem;
+    border: none;
+    background: white;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.1);
+    transition: all 0.3s ease;
 }
-
 #promptInput:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
     transform: scale(1.02);
 }
-
-.loading {
-    display: none;
-    padding: 1.5rem;
-    color: var(--primary-color);
-    font-weight: 500;
-    gap: 0.75rem;
-    align-items: center;
-    justify-content: center;
+.generate-button {
+    padding: 1rem 3rem;
+    font-size: 1.1rem;
+    border-radius: 1.2rem;
+    background: linear-gradient(135deg, var(--primary-color), #1d4ed8);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
 }
-
-.loading-dot {
-    width: 8px;
-    height: 8px;
-    background: var(--primary-color);
+.generate-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+}
+/* 新增加载动画 */
+.loading-spinner {
+    width: 2rem;
+    height: 2rem;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
     border-radius: 50%;
-    animation: loading-bounce 1.4s infinite ease-in-out;
+    animation: spin 1s linear infinite;
 }
 
-.loading-dot:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-.loading-dot:nth-child(3) {
-    animation-delay: 0.4s;
-}
-
-@keyframes loading-bounce {
-    0%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-10px);
-    }
+@keyframes spin {
+    to { transform: rotate(360deg); }
 }
 
 .generated-alert {
@@ -92,7 +94,21 @@
 
 /* 调整生成问卷展示样式 */
 #surveyContainer {
-    transition: opacity 0.3s ease;
+    background: white;
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    margin-top: 2rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+.question-card {
+    background: #f8fafc;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+}
+.question-card:hover {
+    transform: translateY(-3px);
 }
 
 #surveyContainer.fade-in {

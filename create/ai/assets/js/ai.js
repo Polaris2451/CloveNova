@@ -1,6 +1,7 @@
 // ai-generate.js
 const AI_API_ENDPOINT = 'https://api.clovenova.cn/api/ai-generate';
 
+// ai-generate.js
 async function generateSurvey() {
     const promptInput = document.getElementById('promptInput');
     const loading = document.getElementById('loading');
@@ -16,18 +17,17 @@ async function generateSurvey() {
     }
 
     try {
-        // 显示加载状态
-        loading.style.display = 'block';
+        loading.style.display = 'flex'; // 改为flex布局
         promptInput.disabled = true;
 
-        // 调用AI API
+        // 修改请求格式为纯文本
         const response = await fetch(AI_API_ENDPOINT, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'text/plain', // 修改Content-Type
                 'Authorization': `Bearer ${localStorage.getItem('authToken')}`
             },
-            body: JSON.stringify({ prompt })
+            body: prompt // 直接发送字符串
         });
 
         if (!response.ok) {
@@ -38,7 +38,6 @@ async function generateSurvey() {
         const surveyData = await response.json();
         renderSurvey(surveyData);
         showAlert('问卷生成成功！', 'success');
-
     } catch (error) {
         showAlert(`生成失败: ${error.message}`, 'error');
     } finally {
@@ -46,6 +45,7 @@ async function generateSurvey() {
         promptInput.disabled = false;
     }
 }
+
 
 function renderSurvey(data) {
     const container = document.getElementById('surveyContainer');

@@ -93,7 +93,7 @@ body {
     box-shadow: var(--shadow-lg);
     border-radius: var(--radius-md);
     z-index: 1;
-    margin-top: 0.5rem;
+    /*margin-top: 0.5rem;*/
     opacity: 0;
     transform: translateY(-10px);
     transition: all 0.2s ease;

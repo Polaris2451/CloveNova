@@ -1,49 +1,27 @@
 // ai-generate.js
 const AI_API_ENDPOINT = 'https://api.clovenova.cn/api/ai-generate';
 
-// ai-generate.js
+// 修改后的生成函数
 async function generateSurvey() {
-    const promptInput = document.getElementById('promptInput');
-    const loading = document.getElementById('loading');
     const prompt = promptInput.value.trim();
 
-    if (!prompt) {
-        showAlert('请输入生成提示', 'error');
-        return;
+    // 请求体保持JSON格式
+    const response = await fetch(AI_API_ENDPOINT, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ prompt: prompt }) // 保持对象结构
+    });
+
+    // 增强响应处理
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || `HTTP错误! 状态码: ${response.status}`);
     }
-    if (prompt.length > 50) {
-        showAlert('输入内容不能超过50字', 'error');
-        return;
-    }
 
-    try {
-        loading.style.display = 'flex'; // 改为flex布局
-        promptInput.disabled = true;
-
-        const response = await fetch(AI_API_ENDPOINT, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json', // 保持JSON格式
-                'Authorization': `Bearer ${localStorage.getItem('authToken')}`
-            },
-            body: JSON.stringify({ prompt: prompt }) // 保持对象结构但prompt为字符串
-        });
-
-
-        if (!response.ok) {
-            const error = await response.json();
-            throw new Error(error.message || '生成失败');
-        }
-
-        const surveyData = await response.json();
-        renderSurvey(surveyData);
-        showAlert('问卷生成成功！', 'success');
-    } catch (error) {
-        showAlert(`生成失败: ${error.message}`, 'error');
-    } finally {
-        loading.style.display = 'none';
-        promptInput.disabled = false;
-    }
+    return response.json(); // 直接获取结构化数据
 }
 
 

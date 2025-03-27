@@ -143,18 +143,23 @@ async function submitSurvey() {
     }
 }
 
-// 初始化页面
+// 修改初始化函数
 function init() {
-
-    const token = localStorage.getItem('authToken')
-    // 检查登录状态
+    const token = localStorage.getItem('authToken');
     if (!token) {
         window.location.href = '/login';
         return;
     }
-    // 初始加载一个空问题
-    addQuestion();
+
+    // 延迟执行确保DOM加载完成
+    setTimeout(() => {
+        const container = document.getElementById('questionsContainer');
+        if (container) {
+            addQuestion();
+        }
+    }, 100);
 }
+
 
 // 初始化页面
 init();

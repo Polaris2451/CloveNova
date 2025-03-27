@@ -20,15 +20,15 @@ async function generateSurvey() {
         loading.style.display = 'flex'; // 改为flex布局
         promptInput.disabled = true;
 
-        // 修改请求格式为纯文本
         const response = await fetch(AI_API_ENDPOINT, {
             method: 'POST',
             headers: {
-                'Content-Type': 'text/plain', // 修改Content-Type
+                'Content-Type': 'application/json', // 保持JSON格式
                 'Authorization': `Bearer ${localStorage.getItem('authToken')}`
             },
-            body: prompt // 直接发送字符串
+            body: JSON.stringify({ prompt: prompt }) // 保持对象结构但prompt为字符串
         });
+
 
         if (!response.ok) {
             const error = await response.json();

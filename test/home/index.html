@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clove问卷 - 您的智能问卷平台</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<nav class="navbar">
+    <a href="/" class="logo">
+        <i class="fas fa-poll"></i> Clove问卷
+    </a>
+    <div class="nav-links">
+        <div class="dropdown">
+            <button class="create-btn">
+                <i class="fas fa-plus"></i> 新建问卷
+            </button>
+            <div class="dropdown-content">
+                <a href="/create"><i class="fas fa-pencil-alt"></i> 手动创建</a>
+                <a href="/create/ai"><i class="fas fa-robot"></i> AI生成</a>
+            </div>
+        </div>
+    </div>
+    <div class="user-menu">
+        <button class="user-avatar">
+            <i class="fas fa-user-circle"></i>
+        </button>
+        <div class="user-panel">
+            <div class="panel-header">
+                <h3 id="username">加载中...</h3>
+                <p id="user-id">UID: --</p>
+            </div>
+            <ul class="panel-menu">
+                <li><a href="/user/me"><i class="fas fa-user"></i> 个人中心</a></li>
+                <li><a href="/data-panel"><i class="fas fa-chart-bar"></i> 数据面板</a></li>
+                <li><a onclick="userExit()" class="logout-btn"><i class="fas fa-sign-out-alt"></i> 退出登录</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main class="container">
+    <div class="action-bar">
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="SearchKeyword" placeholder="搜索问卷..." class="search-input">
+        </div>
+        <div class="filter-box">
+            <select class="filter-select" id="filterSelect">
+                <option value="all">全部问卷</option>
+                <option value="my">我的问卷</option>
+                <option value="popular">热门问卷</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="survey-list" id="surveyList">
+        <div class="loader"></div>
+    </div>
+</main>
+
+<script type="module">
+    import { validateToken } from '../../assets/js/ValidateToken.js';
+    validateToken();
+</script>
+<script src="assets/js/home.js"></script>
+</body>
+</html>

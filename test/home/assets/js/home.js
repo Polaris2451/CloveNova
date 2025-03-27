@@ -9,7 +9,7 @@ function initHomePage() {
 
     // 绑定事件监听器
     document.querySelector('.search-input').addEventListener('input', applyFilters);
-    document.querySelectorAll('.filter-option').forEach(option => {
+    document.querySelectorAll('.filter-select').forEach(option => {
         option.addEventListener('change', handleFilterChange);
     });
 

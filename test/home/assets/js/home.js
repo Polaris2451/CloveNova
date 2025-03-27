@@ -15,6 +15,7 @@ function initHomePage() {
 
     // 绑定登出按钮
     document.getElementById('logoutBtn')?.addEventListener('click', userExit);
+    getUserProfile();
 }
 
 // 通用数据加载方法
@@ -134,6 +135,30 @@ function applyFilters(e) {
     });
 
     renderSurveys(filtered);
+}
+
+// 获取用户信息
+async function getUserProfile() {
+    try {
+        // 调用用户信息API
+        const response = await fetch('https://api.clovenova.cn/api/user/profile', {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+            }
+        });
+        if (!response.ok) throw new Error('获取用户信息失败');
+
+        const userData = await response.json();
+        // 更新DOM
+        const panelHeader = document.querySelector('.panel-header');
+        panelHeader.innerHTML = `
+            <h3>${escapeHTML(userData.username)}</h3>
+            <p>UID: ${userData.user_id}</p>
+        `;
+    } catch (error) {
+        console.error('错误:', error);
+        alert('用户信息加载失败');
+    }
 }
 
 // 辅助函数

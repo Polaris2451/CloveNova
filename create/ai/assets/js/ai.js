@@ -4,13 +4,13 @@ const AI_API_ENDPOINT = 'https://api.clovenova.cn/api/ai-generate';
 // 修改后的生成函数
 async function generateSurvey() {
     const prompt = promptInput.value.trim();
-
+    const token = localStorage.getItem('authToken');
     // 请求体保持JSON格式
     const response = await fetch(AI_API_ENDPOINT, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${authToken}`
+            'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({ prompt: prompt }) // 保持对象结构
     });

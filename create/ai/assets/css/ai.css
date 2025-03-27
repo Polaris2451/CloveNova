@@ -1,0 +1,136 @@
+/* create.css */
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #1e40af;
+    --background-color: #f3f4f6;
+    --success-color: #059669;
+    --error-color: #dc2626;
+}
+
+/* 新增AI生成样式 */
+.ai-generator {
+    text-align: center;
+    padding: 4rem 2rem;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 2rem;
+}
+
+#promptInput {
+    width: 100%;
+    max-width: 500px;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem auto;
+    border: 2px solid var(--primary-color);
+    border-radius: 1rem;
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.1);
+}
+
+#promptInput:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+    transform: scale(1.02);
+}
+
+.loading {
+    display: none;
+    padding: 1.5rem;
+    color: var(--primary-color);
+    font-weight: 500;
+    gap: 0.75rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    animation: loading-bounce 1.4s infinite ease-in-out;
+}
+
+.loading-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.loading-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes loading-bounce {
+    0%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+}
+
+.generated-alert {
+    padding: 1rem 1.5rem;
+    border-radius: 0.75rem;
+    margin: 1rem auto;
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.success-alert {
+    background: #dcfce7;
+    color: var(--success-color);
+    border: 1px solid #86efac;
+}
+
+.error-alert {
+    background: #fee2e2;
+    color: var(--error-color);
+    border: 1px solid #fca5a5;
+}
+
+/* 调整生成问卷展示样式 */
+#surveyContainer {
+    transition: opacity 0.3s ease;
+}
+
+#surveyContainer.fade-in {
+    opacity: 1;
+}
+
+.ai-question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.ai-edit-tip {
+    color: #64748b;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* 移动端适配 */
+@media (max-width: 640px) {
+    .ai-generator {
+        padding: 2rem 1rem;
+    }
+
+    #promptInput {
+        margin: 1rem auto;
+        padding: 0.875rem;
+    }
+
+    .loading {
+        font-size: 0.875rem;
+    }
+
+    .generated-alert {
+        width: 90%;
+        font-size: 0.875rem;
+    }
+}

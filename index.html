@@ -1,62 +1,211 @@
-<!-- / -->
 <!DOCTYPE html>
-<link rel="icon" href="/favicon.ico" type="image/x-icon">
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clove问卷 - 您的智能问卷平台</title>
-    <link rel="stylesheet" href="assets/css/home.css">
+    <title>CloveNova - 大学生创新平台</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/intro.css">
 </head>
 <body>
+<!-- 导航栏 -->
 <nav class="navbar">
-    <a href="/" class="logo">Clove 问卷</a>
-    <div class="nav-links">
-        <a href="/create" class="create-btn">+ 新建问卷</a>
-        <div id="createPanel" class="user-panel">
-            <ul class="panel-menu">
-                <li><a href="/create">手动创建</a></li>
-                <li><a href="/create/ai">AI生成</a></li>s
-            </ul>
-        </div>
-    </div>
-    <div class="user-menu">
-        <a href=/user-center class="user-me-btn">
-            <svg t="1742278187554" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2870" width="200" height="200"><path d="M512.02048 476.09856c-84.3776 0-153.00608-68.62848-153.00608-152.9856s68.62848-152.9856 153.00608-152.9856c84.35712 0 152.9856 68.62848 152.9856 152.9856s-68.62848 152.9856-152.9856 152.9856z m0-260.93568c-59.53536 0-107.97056 48.4352-107.97056 107.95008s48.4352 107.95008 107.97056 107.95008c59.51488 0 107.95008-48.4352 107.95008-107.95008s-48.4352-107.95008-107.95008-107.95008zM623.63648 853.85216H400.384c-105.49248 0-191.32416-76.20608-191.32416-169.86112 0-93.63456 85.83168-169.84064 191.32416-169.84064h223.25248c105.472 0 191.32416 76.20608 191.32416 169.84064 0 93.67552-85.83168 169.86112-191.32416 169.86112zM400.384 559.18592c-80.67072 0-146.30912 55.99232-146.30912 124.8256 0 68.83328 65.6384 124.84608 146.30912 124.84608h223.25248c80.65024 0 146.30912-55.99232 146.30912-124.84608 0-68.8128-65.6384-124.8256-146.30912-124.8256H400.384z" fill="#8d8d8d" p-id="2871"></path></svg>            </a>
-        <div id="userPanel" class="user-panel">
-            <div class="panel-header">
+    <div class="container navbar-container">
+        <a href="/" class="navbar-brand">
+            <img src="data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2L2 7L12 12L22 7L12 2Z' fill='%234f46e5'/%3E%3Cpath d='M2 17L12 22L22 17' stroke='%234f46e5' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M2 12L12 17L22 12' stroke='%234f46e5' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E"
+                 alt="Logo" class="brand-logo">
+            <span class="brand-name">CloveNova</span>
+        </a>
 
-            </div>
-            <ul class="panel-menu">
-                <li><a href="/user-center">个人中心</a></li>
-                <li><a href="/data-panel">数据面板</a></li>
-                <li><a style="color:orangered;font-weight:bold;" onclick="userExit()">退出登录</a></li>
-            </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item"><a href="#features" class="nav-link">功能</a></li>
+            <li class="nav-item"><a href="#community" class="nav-link">社区</a></li>
+            <li class="nav-item"><a href="#resources" class="nav-link">资源</a></li>
+        </ul>
 
+        <div class="nav-actions">
+            <a href="/login" class="btn btn-ghost">登录</a>
+            <a href="/register" class="btn btn-primary">注册</a>
         </div>
+
+        <button class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
     </div>
 </nav>
 
-<main class="container">
-    <div class="action-bar">
-        <label for="SearchKeyword"></label><input type="text" class="search-input" id="SearchKeyword" placeholder="搜索问卷...">
-        <label for="filterSelect"></label>
-        <select class="filter-select" id="filterSelect">
-            <option value="all">全部问卷</option>
-            <option value="my">我的问卷</option>
-            <option value="popular">热门问卷</option>
-        </select>
+<!-- 英雄区域 -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="section-subtitle">创新 • 协作 • 成长</span>
+                <h1 class="hero-title">
+                    让创新<span class="text-gradient">触手可及</span>
+                </h1>
+                <p class="hero-description">
+                    专为大学生打造的一站式创新平台，提供从创意孵化到项目落地的全方位支持
+                </p>
+                <div class="hero-buttons">
+                    <a href="/register" class="btn btn-primary btn-lg">立即开始</a>
+                    <a href="/demo" class="btn btn-outline btn-lg">观看演示</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">5000+</div>
+                        <div class="stat-label">注册用户</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">300+</div>
+                        <div class="stat-label">合作院校</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                     alt="团队协作"
+                     class="hero-main-image">
+            </div>
+        </div>
     </div>
+</section>
 
-    <div class="survey-list" id="surveyList">
-        <div class="loader"></div>
+<!-- 核心功能 -->
+<section id="features" class="features-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-subtitle">核心功能</span>
+            <h2 class="section-title">创新全流程支持</h2>
+            <p class="section-description">一站式解决大学生创新需求</p>
+        </div>
+
+        <div class="features-container">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3 class="feature-title">创意孵化</h3>
+                <p class="feature-description">从想法到原型的完整支持系统</p>
+                <a href="#" class="feature-link">
+                    了解更多 <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 class="feature-title">团队协作</h3>
+                <p class="feature-description">跨校团队组建与管理工具</p>
+                <a href="#" class="feature-link">
+                    了解更多 <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h3 class="feature-title">开发工具</h3>
+                <p class="feature-description">集成式开发环境与资源库</p>
+                <a href="#" class="feature-link">
+                    了解更多 <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
     </div>
-</main>
-<script type="module">
-    import { validateToken } from './assets/js/ValidateToken.js';
-    // 验证token
-    validateToken();
-</script>
-<script src="assets/js/home.js"></script>
+</section>
+
+<!-- 社区论坛 -->
+<section id="community" class="community-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-subtitle">创新社区</span>
+            <h2 class="section-title">加入创新者社区</h2>
+            <p class="section-description">与全国创新者交流合作</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">12k+</div>
+                <div class="stat-label">讨论主题</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">8k+</div>
+                <div class="stat-label">活跃用户</div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="/forum" class="btn btn-primary btn-lg">
+                <span>进入社区</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- 注册CTA -->
+<section class="cta-section">
+    <div class="container text-center">
+        <h2 class="section-title">立即开启创新之旅</h2>
+        <p class="section-description mb-4">加入全国大学生创新网络</p>
+        <a href="/register" class="btn btn-primary btn-lg">免费注册</a>
+    </div>
+</section>
+
+<!-- 页脚 -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-container">
+            <!-- 品牌信息 -->
+            <div class="footer-brand">
+                <img src="logo.svg" class="footer-logo" alt="CloveNova">
+                <p>大学生创新生态系统</p>
+            </div>
+
+            <!-- 资源链接 -->
+            <div class="footer-column">
+                <h4 class="footer-title">资源</h4>
+                <nav class="footer-links">
+                    <a href="#" class="footer-link">帮助中心</a>
+                    <a href="#" class="footer-link">开发文档</a>
+                    <a href="#" class="footer-link">API</a>
+                </nav>
+            </div>
+
+            <!-- 关于我们 -->
+            <div class="footer-column">
+                <h4 class="footer-title">关于</h4>
+                <nav class="footer-links">
+                    <a href="#" class="footer-link">团队</a>
+                    <a href="#" class="footer-link">合作伙伴</a>
+                    <a href="#" class="footer-link">联系我们</a>
+                </nav>
+            </div>
+        </div>
+
+        <hr class="footer-divider">
+
+        <div class="footer-bottom">
+            <div class="copyright">© 2023 CloveNova. 保留所有权利</div>
+            <div class="social-links">
+                <a href="#" class="social-link">Twitter</a>
+                <a href="#" class="social-link">LinkedIn</a>
+                <a href="#" class="social-link">GitHub</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<button class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<script src="assets/js/intro.js"></script>
 </body>
 </html>

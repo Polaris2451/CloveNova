@@ -20,7 +20,7 @@ async function handleLogin(e) {
         const { token, user_id } = await response.json();
         localStorage.setItem('authToken', token);
         localStorage.setItem('userId', user_id);
-        window.location.href = '/';
+        window.location.href = '/home';
     } catch (error) {
         // 增强错误处理
         console.error('登录错误:', error);

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI生成问卷 - Clove问卷</title>
+    <link rel="stylesheet" href="assets/css/create.css">
+    <style>
+        .ai-generator {
+            text-align: center;
+            padding: 2rem 0;
+        }
+        #promptInput {
+            width: 100%;
+            max-width: 500px;
+            padding: 0.8rem;
+            margin: 1rem 0;
+            border: 2px solid var(--primary-color);
+            border-radius: 0.5rem;
+        }
+        .loading {
+            display: none;
+            padding: 1rem;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="ai-generator">
+        <h1 class="form-title">AI问卷生成</h1>
+        <input type="text" id="promptInput" placeholder="请输入问卷主题（最多50字）" maxlength="50">
+        <button class="btn btn-primary" onclick="generateSurvey()">生成问卷</button>
+        <div class="loading" id="loading">正在生成问卷，请稍候...</div>
+    </div>
+
+    <!-- 渲染区域 -->
+    <div id="surveyContainer" style="display:none;">
+        <h1 class="form-title">生成结果</h1>
+        <div class="input-group">
+            <label>问卷标题</label>
+            <input type="text" id="aiTitle" required>
+            <label>问卷描述</label>
+            <textarea id="aiDescription" class="description-input" rows="3"></textarea>
+            <div class="switch-container">
+                <label class="switch-label">问卷可见性：</label>
+                <label class="modern-switch">
+                    <input type="checkbox" id="aiIsPublic" hidden>
+                    <span class="slider"></span>
+                    <span class="labels" data-on="公开" data-off="私有"></span>
+                </label>
+            </div>
+        </div>
+
+        <div id="aiQuestionsContainer"></div>
+
+        <div style="margin-top: 3rem;">
+            <button class="btn btn-primary" onclick="submitSurvey()">发布问卷</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    async function generateSurvey() {
+        const prompt = document.getElementById('promptInput').value.trim();
+        if (!prompt) {
+            alert('请输入生成提示');
+            return;
+        }
+
+        document.getElementById('loading').style.display = 'block';
+
+        try {
+            // 调用AI生成API
+            const response = await fetch('https://api.clovenova.cn/api/ai-generate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+                },
+                body: JSON.stringify({ prompt: prompt })
+            });
+
+            if (!response.ok) throw new Error('生成失败');
+
+            const surveyData = await response.json();
+            renderSurvey(surveyData);
+
+        } catch (error) {
+            alert(error.message);
+        } finally {
+            document.getElementById('loading').style.display = 'none';
+        }
+    }
+
+    function renderSurvey(data) {
+        // 填充基本信息
+        document.getElementById('aiTitle').value = data.title;
+        document.getElementById('aiDescription').value = data.description;
+        document.getElementById('aiIsPublic').checked = data.is_public;
+
+        // 渲染问题
+        const container = document.getElementById('aiQuestionsContainer');
+        container.innerHTML = '';
+
+        data.questions.forEach(question => {
+            const questionHTML = `
+                    <div class="question-card">
+                        <div class="input-group">
+                            <label>问题内容</label>
+                            <input type="text" value="${question.content}" class="question-input" required>
+                        </div>
+                        <div class="input-group">
+                            <label>问题类型</label>
+                            <select class="type-select" onchange="handleTypeChange(this)">
+                                ${Object.entries({
+                single_select: '单选题',
+                multi_select: '多选题',
+                text: '文本题'
+            }).map(([value, text]) => `
+                                    <option value="${value}" ${question.Type === value ? 'selected' : ''}>
+                                        ${text}
+                                    </option>
+                                `).join('')}
+                            </select>
+                        </div>
+                        ${question.Type !== 'text' ? `
+                            <div class="options-container">
+                                <div class="options-list">
+                                    ${question.options.map(option => `
+                                        <div class="option-item">
+                                            <input type="text" value="${option.text}" class="option-input" required>
+                                            <button class="btn btn-danger-primary"
+                                                onclick="this.parentElement.remove()">删除</button>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                                <button type="button" class="btn btn-secondary"
+                                    onclick="addOption(this)">+ 添加选项</button>
+                            </div>
+                        ` : ''}
+                        <button class="btn btn-danger-secondary"
+                            onclick="this.parentElement.remove()">删除问题</button>
+                    </div>
+                `;
+            container.insertAdjacentHTML('beforeend', questionHTML);
+        });
+
+        document.getElementById('surveyContainer').style.display = 'block';
+    }
+
+    // 复用原始JS功能
+    window.addQuestion = addQuestion;
+    window.addOption = addOption;
+    window.handleTypeChange = handleTypeChange;
+    window.submitSurvey = submitSurvey;
+</script>
+<script src="../assets/js/create.js"></script> <!-- 原始功能 -->
+<script src="assets/js/ai.js"></script> <!-- 新增AI功能 -->
+</body>
+</html>

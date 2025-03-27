@@ -364,6 +364,7 @@ body {
     cursor: pointer;
     transition: all 0.2s;
     width: 100%;
+    margin-top: 5px;
 }
 /* 加载状态 */
 .loader {

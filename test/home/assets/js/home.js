@@ -93,7 +93,7 @@ function renderSurveys(surveys) {
     // 绑定查看详情事件
     document.querySelectorAll('.btn-view').forEach(btn => {
         btn.addEventListener('click', (e) => {
-            window.location.href = `/survey/id=${e.target.dataset.id}`;
+            window.location.href = `/survey/?id=${e.target.dataset.id}`;
         });
     });
 }

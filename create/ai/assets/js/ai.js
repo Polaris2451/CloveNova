@@ -1,5 +1,5 @@
 // ai-generate.js
-const AI_API_ENDPOINT = 'https://api.yourservice.com/ai/generate-survey';
+const AI_API_ENDPOINT = 'https://api.clovenova.cn/api/ai-generate';
 
 async function generateSurvey() {
     const promptInput = document.getElementById('promptInput');

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>创建问卷 - Clove问卷</title>
+  <link rel="stylesheet" href="assets/css/create.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+<div class="container">
+  <div class="header">
+    <h1 class="form-title">创建新问卷</h1>
+    <p class="form-subtitle">设计您的问卷，收集您需要的信息</p>
+  </div>
+
+  <div class="survey-info">
+    <div class="input-group">
+      <label for="title">问卷标题 <span class="required">*</span></label>
+      <input type="text" class="title" id="title" placeholder="例如：用户满意度调查" required>
+    </div>
+
+    <div class="input-group">
+      <label for="description">问卷描述</label>
+      <textarea
+              id="description"
+              rows="4"
+              class="description-input"
+              placeholder="请简要描述问卷的目的和内容..."
+              maxlength="200"
+      ></textarea>
+      <div class="char-counter"><span id="charCount">0</span>/200</div>
+    </div>
+
+    <div class="input-group">
+      <label>问卷可见性</label>
+      <div class="switch-container">
+        <label class="modern-switch">
+          <input type="checkbox" id="is_public" hidden>
+          <span class="slider"></span>
+          <span class="labels" data-on="公开" data-off="私有"></span>
+        </label>
+        <span class="switch-hint">公开问卷将对所有用户可见</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="questions-section">
+    <h2 class="section-title">问卷问题</h2>
+    <div id="questionsContainer">
+      <!-- 问题将动态添加到这里 -->
+    </div>
+
+    <button class="btn btn-add-question" onclick="addQuestion()">
+      <i class="fas fa-plus"></i> 添加问题
+    </button>
+  </div>
+
+  <div class="action-buttons">
+    <button class="btn btn-preview">
+      <i class="fas fa-eye"></i> 预览问卷
+    </button>
+    <button class="btn btn-primary" onclick="submitSurvey()">
+      <i class="fas fa-paper-plane"></i> 发布问卷
+    </button>
+  </div>
+</div>
+
+<div class="floating-notification" id="notification"></div>
+
+<script type="module">
+  import { validateToken } from '../assets/js/ValidateToken.js';
+  // 验证token
+  validateToken();
+</script>
+<script src="assets/js/create.js"></script>
+</body>
+
+</html>

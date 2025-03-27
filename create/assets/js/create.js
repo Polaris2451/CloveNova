@@ -163,3 +163,8 @@ function init() {
 
 // 初始化页面
 init();
+// 显式导出函数到全局
+window.addQuestion = addQuestion;
+window.addOption = addOption;
+window.handleTypeChange = handleTypeChange;
+window.submitSurvey = submitSurvey;

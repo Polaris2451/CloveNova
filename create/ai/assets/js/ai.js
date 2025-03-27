@@ -26,49 +26,60 @@ async function generateSurvey() {
 
 
 function renderSurvey(data) {
-    const container = document.getElementById('surveyContainer');
-    const questionsContainer = document.getElementById('aiQuestionsContainer');
+    const container = document.getElementById('aiQuestionsContainer');
+    if (!container) {
+        console.error('找不到问题容器');
+        return;
+    }
+    // 清空现有内容前添加加载状态
+    container.innerHTML = '<div class="loading">渲染中...</div>';
 
-    // 填充基础信息
-    document.getElementById('aiTitle').value = data.title || '';
-    document.getElementById('aiDescription').value = data.description || '';
-    document.getElementById('aiIsPublic').checked = data.is_public || false;
+    // 延迟渲染确保DOM更新
+    setTimeout(() => {
+        container.innerHTML = '';
+        data.questions.forEach((question, index) => {
+            // 保持原有渲染逻辑，但修复类型判断
+            const type = question.Type?.toLowerCase() || 'single_select';
+            // 填充基础信息
+            document.getElementById('aiTitle').value = data.title || '';
+            document.getElementById('aiDescription').value = data.description || '';
+            document.getElementById('aiIsPublic').checked = data.is_public || false;
 
-    // 清空现有问题
-    questionsContainer.innerHTML = '';
-
-    // 渲染问题列表
-    data.questions.forEach((question, index) => {
-        const questionHTML = `
-      <div class="question-card" data-index="${index}">
-        <div class="input-group">
-          <label>问题 ${index + 1}</label>
-          <input type="text" 
-                 class="question-input" 
-                 value="${escapeHtml(question.content)}" 
-                 required>
-        </div>
+            // 渲染问题列表
+            data.questions.forEach((question, index) => {
+                const questionHTML = `
+              <div class="question-card" data-index="${index}">
+                <div class="input-group">
+                  <label>问题 ${index + 1}</label>
+                  <input type="text" 
+                         class="question-input" 
+                         value="${escapeHtml(question.content)}" 
+                         required>
+                </div>
+                
+                <div class="input-group">
+                  <label>问题类型</label>
+                  <select class="type-select" onchange="handleTypeChange(this)">
+                    ${generateTypeOptions(question.Type)}
+                  </select>
+                </div>
         
-        <div class="input-group">
-          <label>问题类型</label>
-          <select class="type-select" onchange="handleTypeChange(this)">
-            ${generateTypeOptions(question.Type)}
-          </select>
-        </div>
+                ${renderOptions(question)}
+                
+                <button class="btn btn-danger-secondary" 
+                        onclick="this.closest('.question-card').remove()">
+                  删除问题
+                </button>
+              </div>
+    `           ;
+                container.insertAdjacentHTML('beforeend', questionHTML);
+            });
 
-        ${renderOptions(question)}
-        
-        <button class="btn btn-danger-secondary" 
-                onclick="this.closest('.question-card').remove()">
-          删除问题
-        </button>
-      </div>
-    `;
-        questionsContainer.insertAdjacentHTML('beforeend', questionHTML);
-    });
+            container.style.display = 'block';
+            window.scrollTo({top: container.offsetTop, behavior: 'smooth'});
+        });
+    }, 50);
 
-    container.style.display = 'block';
-    window.scrollTo({ top: container.offsetTop, behavior: 'smooth' });
 }
 
 // 辅助函数
@@ -156,3 +167,24 @@ window.handleTypeChange = function(select) {
     const optionsContainer = card.querySelector('.options-container');
     optionsContainer.style.display = select.value === 'text' ? 'none' : 'block';
 };
+
+// 添加AI页面初始化
+function initAIPage() {
+    const token = localStorage.getItem('authToken');
+    if (!token) {
+        window.location.href = '/login';
+        return;
+    }
+
+    // 预加载第一个问题
+    setTimeout(() => {
+        const container = document.getElementById('aiQuestionsContainer');
+        if (container && container.children.length === 0) {
+            addQuestion('text'); // 初始化一个示例问题
+        }
+    }, 300);
+}
+
+// 执行初始化
+document.addEventListener('DOMContentLoaded', initAIPage);
+

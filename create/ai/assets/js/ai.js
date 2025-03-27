@@ -10,7 +10,7 @@ async function generateSurvey() {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
+            'Authorization': `Bearer ${authToken}`
         },
         body: JSON.stringify({ prompt: prompt }) // 保持对象结构
     });

@@ -2,18 +2,116 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>测试页面</title>
+    <title>测试页面导航</title>
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --hover-color: #3a0ca3;
+            --bg-color: #f8f9fa;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 2rem;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .nav-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid #e0e0e0;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-color);
+        }
+
+        .nav-card h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .nav-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .divider {
+            height: 1px;
+            background: #eee;
+            margin: 2rem 0;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            color: #888;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
-    <h1>此页面为测试页面</h1>
+<div class="container">
+    <h1>测试页面导航中心</h1>
 
-    <p>
-        <a href="/test/create">创建页面测试</a>
-        <a href="/test/login-register">登录页面测试</a>
-        <a href="/test/data-panel">数据页面测试</a>
+    <div class="nav-grid">
+        <a href="/test/create" class="nav-card">
+            <h3>创建页面</h3>
+            <p>测试内容创建功能和表单提交</p>
+        </a>
 
-    </p>
+        <a href="/test/login-register" class="nav-card">
+            <h3>登录/注册</h3>
+            <p>测试用户认证和账户管理功能</p>
+        </a>
 
+        <a href="/test/data-panel" class="nav-card">
+            <h3>数据面板</h3>
+            <p>测试数据可视化和图表展示</p>
+        </a>
 
+        <!-- 可以继续添加更多卡片 -->
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="footer">
+        <p>测试系统 &copy; 2023 | 版本 1.0.0</p>
+    </div>
+</div>
 </body>
 </html>

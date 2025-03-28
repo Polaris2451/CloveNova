@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CloveNova - 创新论坛</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/forum.css">
+</head>
+<body>
+<!-- 导航栏 -->
+<nav class="navbar">
+  <div class="container navbar-container">
+    <a href="/" class="navbar-brand">
+      <img src="data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2L2 7L12 12L22 7L12 2Z' fill='%234f46e5'/%3E%3Cpath d='M2 17L12 22L22 17' stroke='%234f46e5' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M2 12L12 17L22 12' stroke='%234f46e5' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E"
+           alt="Logo" class="brand-logo">
+      <span class="brand-name">CloveNova</span>
+    </a>
+
+    <ul class="navbar-nav">
+      <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+      <li class="nav-item"><a href="/forum" class="nav-link active">论坛</a></li>
+      <li class="nav-item"><a href="/projects" class="nav-link">项目</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <div class="search-box">
+        <input type="text" placeholder="搜索论坛...">
+        <button><i class="fas fa-search"></i></button>
+      </div>
+      <a href="/profile" class="btn btn-ghost">
+        <i class="fas fa-user"></i>
+      </a>
+    </div>
+
+    <button class="mobile-menu-btn">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- 论坛主体 -->
+<main class="forum-container">
+  <div class="container">
+    <!-- 论坛头部 -->
+    <div class="forum-header">
+      <h1>创新论坛</h1>
+      <div class="forum-actions">
+        <button class="btn btn-primary" id="new-topic-btn">
+          <i class="fas fa-plus"></i> 新话题
+        </button>
+      </div>
+    </div>
+
+    <!-- 分类导航 -->
+    <div class="forum-categories">
+      <a href="#" class="category active">全部</a>
+      <a href="#" class="category">创意孵化</a>
+      <a href="#" class="category">技术讨论</a>
+      <a href="#" class="category">项目合作</a>
+      <a href="#" class="category">资源分享</a>
+    </div>
+
+    <!-- 话题列表 -->
+    <div class="topics-list">
+      <!-- 单个话题 -->
+      <div class="topic-card">
+        <div class="topic-votes">
+          <button class="vote-btn upvote"><i class="fas fa-arrow-up"></i></button>
+          <span class="vote-count">24</span>
+          <button class="vote-btn downvote"><i class="fas fa-arrow-down"></i></button>
+        </div>
+        <div class="topic-content">
+          <h3 class="topic-title">
+            <a href="#">如何构建一个高效的跨校创新团队？</a>
+          </h3>
+          <p class="topic-excerpt">最近在组建一个跨校创新项目团队，想请教大家关于团队管理和协作工具的选择...</p>
+          <div class="topic-meta">
+                            <span class="author">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="用户头像" class="avatar">
+                                张同学
+                            </span>
+            <span class="comments">
+                                <i class="fas fa-comment"></i> 15
+                            </span>
+            <span class="time">2小时前</span>
+            <span class="category-tag">团队协作</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 更多话题 -->
+      <div class="topic-card">
+        <div class="topic-votes">
+          <button class="vote-btn upvote"><i class="fas fa-arrow-up"></i></button>
+          <span class="vote-count">18</span>
+          <button class="vote-btn downvote"><i class="fas fa-arrow-down"></i></button>
+        </div>
+        <div class="topic-content">
+          <h3 class="topic-title">
+            <a href="#">分享：大学生创新项目融资渠道大全</a>
+          </h3>
+          <p class="topic-excerpt">整理了国内外适合大学生创新项目的融资渠道和申请技巧，希望对大家有帮助...</p>
+          <div class="topic-meta">
+                            <span class="author">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="用户头像" class="avatar">
+                                李同学
+                            </span>
+            <span class="comments">
+                                <i class="fas fa-comment"></i> 8
+                            </span>
+            <span class="time">5小时前</span>
+            <span class="category-tag">资源分享</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-votes">
+          <button class="vote-btn upvote"><i class="fas fa-arrow-up"></i></button>
+          <span class="vote-count">32</span>
+          <button class="vote-btn downvote"><i class="fas fa-arrow-down"></i></button>
+        </div>
+        <div class="topic-content">
+          <h3 class="topic-title">
+            <a href="#">求建议：基于AI的校园服务应用开发技术选型</a>
+          </h3>
+          <p class="topic-excerpt">正在开发一个校园智能助手应用，目前在技术选型上有些纠结，想听听大家的意见...</p>
+          <div class="topic-meta">
+                            <span class="author">
+                                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="用户头像" class="avatar">
+                                王同学
+                            </span>
+            <span class="comments">
+                                <i class="fas fa-comment"></i> 22
+                            </span>
+            <span class="time">1天前</span>
+            <span class="category-tag">技术讨论</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 分页 -->
+    <div class="pagination">
+      <a href="#" class="page-btn disabled"><i class="fas fa-chevron-left"></i></a>
+      <a href="#" class="page-btn active">1</a>
+      <a href="#" class="page-btn">2</a>
+      <a href="#" class="page-btn">3</a>
+      <span class="ellipsis">...</span>
+      <a href="#" class="page-btn">8</a>
+      <a href="#" class="page-btn"><i class="fas fa-chevron-right"></i></a>
+    </div>
+  </div>
+</main>
+
+<!-- 页脚 -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="logo.svg" class="footer-logo" alt="CloveNova">
+        <p>大学生创新生态系统</p>
+      </div>
+      <div class="footer-column">
+        <h4 class="footer-title">资源</h4>
+        <nav class="footer-links">
+          <a href="#" class="footer-link">帮助中心</a>
+          <a href="#" class="footer-link">开发文档</a>
+          <a href="#" class="footer-link">API</a>
+        </nav>
+      </div>
+      <div class="footer-column">
+        <h4 class="footer-title">关于</h4>
+        <nav class="footer-links">
+          <a href="#" class="footer-link">团队</a>
+          <a href="#" class="footer-link">合作伙伴</a>
+          <a href="#" class="footer-link">联系我们</a>
+        </nav>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <div class="copyright">© 2023 CloveNova. 保留所有权利</div>
+      <div class="social-links">
+        <a href="#" class="social-link">Twitter</a>
+        <a href="#" class="social-link">LinkedIn</a>
+        <a href="#" class="social-link">GitHub</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- 返回顶部按钮 -->
+<button class="back-to-top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- 新话题模态框 -->
+<div class="modal" id="new-topic-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>创建新话题</h3>
+      <button class="close-modal">&times;</button>
+    </div>
+    <div class="modal-body">
+      <form id="new-topic-form">
+        <div class="form-group">
+          <label for="topic-title">标题</label>
+          <input type="text" id="topic-title" placeholder="输入话题标题" required>
+        </div>
+        <div class="form-group">
+          <label for="topic-category">分类</label>
+          <select id="topic-category" required>
+            <option value="">选择分类</option>
+            <option value="创意孵化">创意孵化</option>
+            <option value="技术讨论">技术讨论</option>
+            <option value="项目合作">项目合作</option>
+            <option value="资源分享">资源分享</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="topic-content">内容</label>
+          <textarea id="topic-content" rows="8" placeholder="详细描述你的话题..." required></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-ghost close-modal">取消</button>
+          <button type="submit" class="btn btn-primary">发布</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/forum.js"></script>
+</body>
+</html>

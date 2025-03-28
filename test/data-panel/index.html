@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>问卷数据查看面板</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .sidebar {
+            background-color: #f8f9fa;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+        }
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-bottom: 30px;
+        }
+        .data-table {
+            margin-top: 20px;
+        }
+        .filter-card {
+            margin-bottom: 20px;
+        }
+        .summary-card {
+            transition: all 0.3s;
+        }
+        .summary-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <!-- 侧边栏 -->
+        <div class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+            <div class="position-sticky pt-3">
+                <h4 class="text-center mb-4">问卷数据分析</h4>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#overview">概览</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#responses">回答详情</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#demographics">人口统计</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#export">导出数据</a>
+                    </li>
+                </ul>
+                <div class="mt-4 p-3">
+                    <h6>问卷信息</h6>
+                    <p><small>标题: 2023年产品满意度调查</small></p>
+                    <p><small>收集时间: 2023.10.01 - 2023.10.31</small></p>
+                    <p><small>总回答数: 1,245</small></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 主内容区 -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+            <h2 class="mb-4">问卷数据概览</h2>
+
+            <!-- 筛选控制 -->
+            <div class="card filter-card">
+                <div class="card-body">
+                    <h5 class="card-title">筛选条件</h5>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label for="dateRange" class="form-label">时间范围</label>
+                            <select class="form-select" id="dateRange">
+                                <option selected>全部时间</option>
+                                <option>最近7天</option>
+                                <option>最近30天</option>
+                                <option>自定义范围</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="userGroup" class="form-label">用户群体</label>
+                            <select class="form-select" id="userGroup">
+                                <option selected>全部用户</option>
+                                <option>新用户(≤1年)</option>
+                                <option>老用户(>1年)</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="region" class="form-label">地区</label>
+                            <select class="form-select" id="region">
+                                <option selected>全部地区</option>
+                                <option>华北</option>
+                                <option>华东</option>
+                                <option>华南</option>
+                                <option>西部</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 d-flex align-items-end">
+                            <button class="btn btn-primary w-100">应用筛选</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 数据概览卡片 -->
+            <div class="row mb-4">
+                <div class="col-md-3">
+                    <div class="card summary-card text-white bg-primary">
+                        <div class="card-body">
+                            <h5 class="card-title">总回答数</h5>
+                            <h2 class="card-text">1,245</h2>
+                            <p class="card-text"><small>较上月 +12%</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card summary-card text-white bg-success">
+                        <div class="card-body">
+                            <h5 class="card-title">完成率</h5>
+                            <h2 class="card-text">89%</h2>
+                            <p class="card-text"><small>平均用时 4.2分钟</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card summary-card text-white bg-info">
+                        <div class="card-body">
+                            <h5 class="card-title">平均满意度</h5>
+                            <h2 class="card-text">4.2/5</h2>
+                            <p class="card-text"><small>NPS得分 38</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card summary-card text-white bg-warning">
+                        <div class="card-body">
+                            <h5 class="card-title">设备分布</h5>
+                            <h2 class="card-text">62% 移动端</h2>
+                            <p class="card-text"><small>38% 桌面端</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 图表区 -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">满意度评分分布</h5>
+                            <div class="chart-container">
+                                <canvas id="satisfactionChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">回答时间分布</h5>
+                            <div class="chart-container">
+                                <canvas id="timeDistributionChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">问题回答详情</h5>
+                            <div class="table-responsive data-table">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>问题编号</th>
+                                        <th>问题内容</th>
+                                        <th>回答类型</th>
+                                        <th>平均分</th>
+                                        <th>回答数</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>Q1</td>
+                                        <td>您对产品整体满意度如何？</td>
+                                        <td>5分制评分</td>
+                                        <td>4.2</td>
+                                        <td>1,245</td>
+                                        <td><button class="btn btn-sm btn-outline-primary">查看详情</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Q2</td>
+                                        <td>您会向朋友推荐我们的产品吗？</td>
+                                        <td>10分制评分</td>
+                                        <td>8.1</td>
+                                        <td>1,198</td>
+                                        <td><button class="btn btn-sm btn-outline-primary">查看详情</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Q3</td>
+                                        <td>您最常使用的产品功能是？</td>
+                                        <td>多选题</td>
+                                        <td>-</td>
+                                        <td>1,156</td>
+                                        <td><button class="btn btn-sm btn-outline-primary">查看详情</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Q4</td>
+                                        <td>您认为最需要改进的方面是？</td>
+                                        <td>开放题</td>
+                                        <td>-</td>
+                                        <td>987</td>
+                                        <td><button class="btn btn-sm btn-outline-primary">查看详情</button></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<script>
+    // 满意度图表
+    const satisfactionCtx = document.getElementById('satisfactionChart').getContext('2d');
+    const satisfactionChart = new Chart(satisfactionCtx, {
+        type: 'bar',
+        data: {
+            labels: ['1分', '2分', '3分', '4分', '5分'],
+            datasets: [{
+                label: '回答数量',
+                data: [45, 78, 215, 487, 420],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.7)',
+                    'rgba(255, 159, 64, 0.7)',
+                    'rgba(255, 205, 86, 0.7)',
+                    'rgba(75, 192, 192, 0.7)',
+                    'rgba(54, 162, 235, 0.7)'
+                ],
+                borderColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(255, 159, 64)',
+                    'rgb(255, 205, 86)',
+                    'rgb(75, 192, 192)',
+                    'rgb(54, 162, 235)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // 时间分布图表
+    const timeDistributionCtx = document.getElementById('timeDistributionChart').getContext('2d');
+    const timeDistributionChart = new Chart(timeDistributionCtx, {
+        type: 'line',
+        data: {
+            labels: ['10月1日', '10月5日', '10月10日', '10月15日', '10月20日', '10月25日', '10月30日'],
+            datasets: [{
+                label: '每日回答数',
+                data: [65, 59, 80, 81, 56, 55, 40],
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
